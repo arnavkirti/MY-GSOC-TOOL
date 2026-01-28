@@ -2,10 +2,87 @@
   "stats": {
     "commits": 0,
     "pullRequests": 0,
-    "issues": 0,
+    "issues": 11,
     "reviews": 0
   },
   "contributions": [
+    {
+      "title": "opened issue: Notable Alum from Metallurgy department",
+      "description": "Alum spotlight can be a good thing for our website. We can just use LinkedIn to search for some notable alums and reach out to them to give us informa",
+      "date": "2026-01-27",
+      "url": "https://github.com/mahendra07limanpure/Metallurgy-deparment-web/issues/11",
+      "type": "issue"
+    },
+    {
+      "title": "opened issue: Remove eligibility from the course outline and redirect them to admissions website",
+      "description": "there is a eligibility that is present on the programmes page currently. Remove it.",
+      "date": "2026-01-27",
+      "url": "https://github.com/mahendra07limanpure/Metallurgy-deparment-web/issues/10",
+      "type": "issue"
+    },
+    {
+      "title": "opened issue: Add syllabus and course outline in the Programmes page that we have.",
+      "description": "for ug: https://acad.iitr.ac.in/Varsity/Academic_Programmes/UG_New/MT/B.Tech_MT.pdf\nfor pg: https://acad.iitr.ac.in/Varsity/PGProgrammes.html\n\nfor phd",
+      "date": "2026-01-27",
+      "url": "https://github.com/mahendra07limanpure/Metallurgy-deparment-web/issues/9",
+      "type": "issue"
+    },
+    {
+      "title": "opened issue: Need a LOGO for Metallurgy Department",
+      "description": "we can host a competition for it, collab with MeTes.\n",
+      "date": "2026-01-27",
+      "url": "https://github.com/mahendra07limanpure/Metallurgy-deparment-web/issues/8",
+      "type": "issue"
+    },
+    {
+      "title": "opened issue: Separate sections for Labs (thematic and service)",
+      "description": "Currently it is mixed up and also there is no hero section for the lab page. (looks a bit information overload)\nwe need better presentation for it.\nht",
+      "date": "2026-01-27",
+      "url": "https://github.com/mahendra07limanpure/Metallurgy-deparment-web/issues/7",
+      "type": "issue"
+    },
+    {
+      "title": "opened issue: Need better Lab photos to put in Labs Page",
+      "description": "Issue",
+      "date": "2026-01-27",
+      "url": "https://github.com/mahendra07limanpure/Metallurgy-deparment-web/issues/6",
+      "type": "issue"
+    },
+    {
+      "title": "opened issue: People header dropdown",
+      "description": "make a dropdown in people header: include:\n1. Faculty\n2. Research Scholars\n3. Technical Staff\n4. etc.\n\n(need some clarification on this).",
+      "date": "2026-01-27",
+      "url": "https://github.com/mahendra07limanpure/Metallurgy-deparment-web/issues/5",
+      "type": "issue"
+    },
+    {
+      "title": "opened issue: Include announcements section at hero section (right side).",
+      "description": "Issue",
+      "date": "2026-01-27",
+      "url": "https://github.com/mahendra07limanpure/Metallurgy-deparment-web/issues/4",
+      "type": "issue"
+    },
+    {
+      "title": "opened issue: Hero section Banner for Heading",
+      "description": "overlapping of heading with photos needs to be fixed. \nMake a separate banner for heading and below it the photos keep scrolling.",
+      "date": "2026-01-27",
+      "url": "https://github.com/mahendra07limanpure/Metallurgy-deparment-web/issues/3",
+      "type": "issue"
+    },
+    {
+      "title": "opened issue: Faculty research interests need to be accurate.",
+      "description": "refer to this site: https://sites.google.com/view/mme-iit-roorkee/home?authuser=1",
+      "date": "2026-01-27",
+      "url": "https://github.com/mahendra07limanpure/Metallurgy-deparment-web/issues/2",
+      "type": "issue"
+    },
+    {
+      "title": "opened issue: Remove distinguished from the Faculty page heading",
+      "description": "Issue",
+      "date": "2026-01-27",
+      "url": "https://github.com/mahendra07limanpure/Metallurgy-deparment-web/issues/1",
+      "type": "issue"
+    },
     {
       "title": "Pushed commits to arnavkirti/BLT",
       "description": "Code changes",
@@ -63,5 +140,5 @@
       "type": "commit"
     }
   ],
-  "lastUpdated": "2026-01-27T02:20:40.758Z"
+  "lastUpdated": "2026-01-28T02:10:25.821Z"
 }
