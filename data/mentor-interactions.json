@@ -5,21 +5,21 @@
       "role": "Lead Mentor",
       "email": "mentor@example.com",
       "github": "https://github.com/mentor",
-      "avatar": "assets/images/sample-mentor.png"
+      "avatar": "https://github.com/mentor.png"
     },
     {
       "name": "Co-Mentor Name",
       "role": "Co-Mentor",
       "email": "comentor@example.com",
       "github": "https://github.com/comentor",
-      "avatar": "assets/images/sample-mentor.png"
+      "avatar": "https://github.com/mentor.png"
     },
     {
       "name": "Another Mentor",
       "role": "Organization Admin",
       "email": "admin@example.org",
       "github": "https://github.com/orgadmin",
-      "avatar": "assets/images/sample-mentor.png"
+      "avatar": "https://github.com/mentor.png"
     }
   ],
   "interactions": [
