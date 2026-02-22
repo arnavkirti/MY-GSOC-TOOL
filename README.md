@@ -9,12 +9,11 @@ A comprehensive, automated dashboard for Google Summer of Code students to showc
 ## ✨ Features
 
 - **📊 GitHub Contributions Tracking**: Automatically fetches and displays your commits, pull requests, issues, and code reviews using GitHub Actions
-- **💬 Community Participation**: Link to your organization's community platform and showcase your participation in channels
+- **💬 Slack Integration**: Link to your organization's Slack workspace and showcase your community participation
 - **📝 Blog Posts Integration**: Display your progress blog posts and technical write-ups
 - **👨‍🏫 Mentor-Student Interactions**: Document feedback and interactions with your mentors
 - **📅 Weekly Updates Timeline**: Track your weekly progress throughout the program
 - **🏆 Milestones & Achievements**: Highlight your accomplishments and key milestones
-- **✏️ Live Editing Mode**: Edit your dashboard content directly from the web interface using `?edit=true`
 - **🚀 One-Click Setup**: Simply fork this repository and update the config—GitHub Actions handles the rest!
 - **📱 Responsive Design**: Beautiful UI that works on all devices
 - **🔄 Auto-Updates**: Dashboard updates automatically via scheduled GitHub Actions
@@ -57,61 +56,44 @@ Edit `config.json` with your information:
     "workspaceUrl": "https://your-org.slack.com/join/shared_invite/xxx",
     "channels": ["general", "gsoc-2024", "your-project-channel"]
   },
-  "mentor": {
-    "name": "Mentor Name",
-    "email": "mentor@example.com",
-    "avatar": "https://github.com/MENTOR-USERNAME.png",
-    "role": "Project Mentor"
-  }
+  "mentors": [
+    {
+      "name": "Mentor Name",
+      "email": "mentor@example.com",
+      "avatar": "https://github.com/MENTOR-USERNAME.png",
+      "role": "Lead Mentor",
+      "github": "https://github.com/MENTOR-USERNAME"
+    },
+    {
+      "name": "Co-Mentor Name",
+      "email": "co-mentor@example.com",
+      "avatar": "https://github.com/CO-MENTOR-USERNAME.png",
+      "role": "Co-Mentor",
+      "github": "https://github.com/CO-MENTOR-USERNAME"
+    }
+  ]
 }
 ```
+
+### Step 4: Token Setup (Optional but Recommended)
+
+To avoid GitHub API rate limits (especially for local development or frequent updates), set up a GitHub Token:
+
+1.  Copy `.env.example` to `.env`.
+2.  Add your [GitHub Personal Access Token](https://github.com/settings/tokens) to `.env`:
+    ```bash
+    GITHUB_TOKEN=your_token_here
+    ```
+3.  Run the fetch script manually to generate data:
+    ```bash
+    node scripts/fetch-github-data.js
+    ```
 
 That's it! Your dashboard will be live at `https://YOUR-USERNAME.github.io/MY-GSOC-TOOL/`
 
 ## 📖 Detailed Usage
 
-### 🚀 Live Editing Mode (New!)
-
-The dashboard now includes a **runtime editing mode** that allows you to edit content directly in the browser without manually editing JSON files!
-
-#### Setup for Editing Mode
-
-1. **Generate a GitHub Personal Access Token:**
-   - Go to GitHub → Settings → Developer settings → Personal access tokens (classic)
-   - Generate a token with `repo` scope
-   - Save this token securely
-
-2. **Configure your repository:**
-   - Update `libs/constants.js` with your details:
-   ```javascript
-   export const CONFIG = {
-     OWNER: 'your-github-username',
-     REPO: 'your-repository-name',
-     BRANCH: 'main',
-     EMAIL: 'your.email@example.com'
-   };
-   ```
-
-3. **Enable editing mode:**
-   - Add `?edit=true` to your URL: `https://yourusername.github.io/your-repo?edit=true`
-   - Enter your GitHub token when prompted
-   - Start editing directly in the UI!
-
-#### How to Use Editing Mode
-
-- **Edit button**: Click to switch to edit mode for any section
-- **Preview button**: Click to see how your changes look
-- **Save button**: Saves changes directly to your GitHub repository
-- **Add/Remove items**: Use the + and × buttons to manage lists
-- **Real-time preview**: See changes instantly before saving
-
-> **Note**: Your GitHub token is stored locally in your browser and never sent to any third-party servers.
-
-### 📝 Manual Editing (Traditional Method)
-
-You can still edit the JSON files manually if you prefer:
-
-#### Adding Blog Posts
+### Adding Blog Posts
 
 Edit `data/blog-posts.json`:
 
@@ -127,7 +109,7 @@ Edit `data/blog-posts.json`:
 ]
 ```
 
-#### Adding Weekly Updates
+### Adding Weekly Updates
 
 Edit `data/weekly-updates.json`:
 
@@ -223,23 +205,9 @@ Edit `styles.css` to customize the appearance. The CSS uses CSS variables for ea
 
 Modify `index.html` to change the dashboard layout or add new sections.
 
-### Components
-
-The dashboard uses a modular architecture. Each component in the `components/` folder handles rendering for a specific section:
-
-- `header.js` - Personal info and contact links
-- `stats.js` - GitHub statistics and community participation  
-- `project.js` - GSoC project details
-- `blogs.js` - Blog posts section
-- `updates.js` - Weekly updates
-- `milestones.js` - Achievement milestones
-- `mentor.js` - Mentor feedback
-
-To customize a section, edit the corresponding component file.
-
 ### Data Processing
 
-The `index.js` file handles dashboard initialization and module loading. Modify component files to add custom rendering logic.
+The `dashboard.js` file handles all data loading and rendering. Modify it to add custom data processing logic.
 
 ## 📋 File Structure
 
@@ -248,28 +216,15 @@ MY-GSOC-TOOL/
 ├── .github/
 │   └── workflows/
 │       └── update-dashboard.yml  # GitHub Actions workflow
-├── components/
-│   ├── blogs.js                  # Blog posts component
-│   ├── header.js                 # Header component
-│   ├── mentor.js                 # Mentor feedback component
-│   ├── milestones.js            # Milestones component
-│   ├── project.js               # Project info component
-│   ├── stats.js                 # GitHub stats & community component
-│   └── updates.js               # Weekly updates component
 ├── data/
+│   ├── github-contributions.json # Auto-generated GitHub data
 │   ├── blog-posts.json          # Your blog posts
-│   ├── community.json           # Community participation data
-│   ├── mentor.json              # Mentor feedback
-│   ├── milestones.json          # Your achievements
-│   └── weekly-updates.json      # Weekly progress
-├── libs/
-│   ├── api.js                   # GitHub API utilities
-│   ├── config-loader.js         # Configuration loader
-│   ├── constants.js             # Configuration constants
-│   └── utils.js                 # Common utilities
+│   ├── feedback.json            # Mentor feedback
+│   ├── weekly-updates.json      # Weekly progress
+│   └── milestones.json          # Your achievements
 ├── index.html                    # Dashboard HTML
-├── index.js                      # Main dashboard logic
 ├── styles.css                    # Dashboard styles
+├── dashboard.js                  # Dashboard logic
 ├── config.json                   # Your personal config
 └── README.md                     # This file
 ```
@@ -287,14 +242,6 @@ MY-GSOC-TOOL/
 1. Ensure your `config.json` has the correct GitHub username
 2. Check that the GitHub Actions workflow has the necessary permissions
 3. Verify your repository activity is public
-
-### Editing mode not working?
-
-1. **Invalid token**: Make sure your GitHub token has `repo` scope
-2. **Wrong repository config**: Check that `libs/constants.js` has your correct GitHub username and repository name
-3. **CORS issues**: The editing mode only works when served from GitHub Pages or localhost, not from `file://` URLs
-4. **Token expired**: GitHub tokens can expire - generate a new one if editing stops working
-5. **Rate limiting**: If you see 403 errors, you might be hitting GitHub's rate limits
 
 ### Custom domain?
 
@@ -341,12 +288,23 @@ If you encounter issues or have questions:
 
 The following users have forked this project:
 
+- [Pritz395/MY-GSOC-TOOL](https://github.com/Pritz395/MY-GSOC-TOOL) - ⭐ 1 stars
 - [mdkaifansari04/MY-GSOC-TOOL](https://github.com/mdkaifansari04/MY-GSOC-TOOL) - ⭐ 0 stars
-- [Nachiket-Roy/MY-GSOC-TOOL](https://github.com/Nachiket-Roy/MY-GSOC-TOOL) - ⭐ 0 stars
 - [ananya-09/MY-GSOC-TOOL](https://github.com/ananya-09/MY-GSOC-TOOL) - ⭐ 0 stars
 - [arnavkirti/MY-GSOC-TOOL](https://github.com/arnavkirti/MY-GSOC-TOOL) - ⭐ 0 stars
+- [Krishiv-Mahajan/MY-GSOC-TOOL](https://github.com/Krishiv-Mahajan/MY-GSOC-TOOL) - ⭐ 0 stars
+- [sidd190/MY-GSOC-TOOL](https://github.com/sidd190/MY-GSOC-TOOL) - ⭐ 0 stars
+- [DishaA06/MY-GSOC-TOOL](https://github.com/DishaA06/MY-GSOC-TOOL) - ⭐ 0 stars
+- [e-esakman/MY-GSOC-TOOL](https://github.com/e-esakman/MY-GSOC-TOOL) - ⭐ 0 stars
+- [BUDEGlobalEnterprise/MY-GSOC-TOOL](https://github.com/BUDEGlobalEnterprise/MY-GSOC-TOOL) - ⭐ 0 stars
+- [Sumit6307/MY-GSOC-TOOL](https://github.com/Sumit6307/MY-GSOC-TOOL) - ⭐ 0 stars
+- [abdallahrali/MY-GSOC-TOOL](https://github.com/abdallahrali/MY-GSOC-TOOL) - ⭐ 0 stars
+- [karunarapolu/MY-GSOC-TOOL](https://github.com/karunarapolu/MY-GSOC-TOOL) - ⭐ 0 stars
+- [Nachiket-Roy/MY-GSOC-TOOL](https://github.com/Nachiket-Roy/MY-GSOC-TOOL) - ⭐ 0 stars
+- [Manahil-Afzal/MY-GSOC-TOOL](https://github.com/Manahil-Afzal/MY-GSOC-TOOL) - ⭐ 0 stars
+- [Kunal241207/MY-GSOC-TOOL](https://github.com/Kunal241207/MY-GSOC-TOOL) - ⭐ 0 stars
 
-_Last updated: 2025-12-11 00:34:24 UTC_
+_Last updated: 2026-02-22 00:27:56 UTC_
 <!-- FORKS_END -->
 
 ---
